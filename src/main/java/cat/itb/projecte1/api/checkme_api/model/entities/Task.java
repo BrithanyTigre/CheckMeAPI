@@ -4,12 +4,19 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.io.Serializable;
 
 @Data
 @Entity
-public class Task {
+public class Task implements Serializable {
     @Id
     private String idTask;
+    @ManyToOne()
+    @JoinColumn(name = "idList")
+    private List idList;
     private String name;
-    private String description;
+    private boolean done;
+
 }

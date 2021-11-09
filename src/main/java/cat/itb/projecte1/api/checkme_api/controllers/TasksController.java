@@ -15,39 +15,43 @@ public class TasksController {
     private final TasksService tasksService;
 
     @GetMapping("/todoitems")
-    public List<Task> listTasks(){
+    public List<Task> listTasks() {
         return tasksService.listTasks();
     }
 
     @GetMapping("/todoitems/{id}")
-    public ResponseEntity<?> getTask(@PathVariable String id){
+    public ResponseEntity<?> getTask(@PathVariable String id) {
         Task res = tasksService.getTask(id);
-        if (res == null){
+        if (res == null) {
             return ResponseEntity.notFound().build();
-        }else{
+        } else {
             return ResponseEntity.ok(res);
         }
     }
 
     @PostMapping("/todoitems")
-    public ResponseEntity<?> addTask(@RequestBody Task task){
+    public ResponseEntity<?> addTask(@RequestBody Task task) {
         Task res = tasksService.addTask(task);
-        return new ResponseEntity<Task>(res, HttpStatus.CREATED);
+        return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
     @PutMapping("/todoitems/{id}")
-    public ResponseEntity<?> modifyTask(@RequestBody Task task){
+    public ResponseEntity<?> modifyTask(@RequestBody Task task) {
         Task res = tasksService.modifyTask(task);
-        if (res == null){
+        if (res == null) {
             return ResponseEntity.notFound().build();
-        }else{
+        } else {
             return ResponseEntity.ok(res);
         }
     }
 
     @DeleteMapping("todoitems/{id}")
-    public ResponseEntity<?> deleteTask(@PathVariable String id){
+    public ResponseEntity<?> deleteTask(@PathVariable String id) {
         Task res = tasksService.deleteTask(id);
-        return new ResponseEntity<Task>(res, HttpStatus.NO_CONTENT);
+        if (res == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return new ResponseEntity<>(res, HttpStatus.NO_CONTENT);
+        }
     }
 }
