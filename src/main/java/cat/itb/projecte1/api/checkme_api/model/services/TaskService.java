@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class TasksService {
+public class TaskService {
     private final TasksRepository tasksRepository;
 
     // list tasks

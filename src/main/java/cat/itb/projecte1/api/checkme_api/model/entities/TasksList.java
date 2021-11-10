@@ -8,7 +8,7 @@ import javax.persistence.OneToMany;
 
 @Data
 @Entity
-public class List {
+public class TasksList {
     @Id
     private String idList;
     private String name;
