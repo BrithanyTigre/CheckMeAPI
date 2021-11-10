@@ -20,7 +20,7 @@ public class TasksListController {
         return listService.listLists();
     }
 
-    @GetMapping("todolists/{idLlista}")
+    @GetMapping("/todolists/{idLlista}")
     public ResponseEntity<?> getList(@PathVariable String idLlista) {
         TasksList res = listService.getList(idLlista);
         if (res == null) {
