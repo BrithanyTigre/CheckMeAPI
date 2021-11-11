@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TasksListController {
     private final TasksListService listService;
-    private final TaskService taskService;
+    private final TaskController taskService;
 
     @GetMapping("/todolists")
     public List<TasksList> listLists() {

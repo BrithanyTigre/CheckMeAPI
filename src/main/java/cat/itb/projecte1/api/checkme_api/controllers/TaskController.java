@@ -21,8 +21,8 @@ public class TaskController {
     }
 
     @GetMapping("/todoitems/{id}")
-    public ResponseEntity<?> getTask(@PathVariable String id) {
-        Task res = tasksService.getTask(id);
+    public ResponseEntity<?> getTaskInList(@PathVariable String id, TasksList list) {
+        Task res = tasksService.getTaskInList(id, list);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
