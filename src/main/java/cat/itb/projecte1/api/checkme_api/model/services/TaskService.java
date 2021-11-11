@@ -1,6 +1,7 @@
 package cat.itb.projecte1.api.checkme_api.model.services;
 
 import cat.itb.projecte1.api.checkme_api.model.entities.Task;
+import cat.itb.projecte1.api.checkme_api.model.entities.TasksList;
 import cat.itb.projecte1.api.checkme_api.model.repositories.TasksRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,13 @@ import java.util.List;
 public class TaskService {
     private final TasksRepository tasksRepository;
 
-    // list tasks
-    public List<Task> listTasks(){
+    public List<Task> listTasks() {
         return tasksRepository.findAll();
+    }
+
+    // list tasks
+    public List<Task> listTasksByList(TasksList idList){
+        return tasksRepository.findAllByIdTasksList(idList);
     }
 
     // get task by id
