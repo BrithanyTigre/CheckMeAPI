@@ -27,6 +27,10 @@ public class TaskService {
         return tasksRepository.findById(id).orElse(null);
     }
 
+    public Task getTaskInList(String id, TasksList list) {
+        return tasksRepository.findByIdTaskAndIdTasksList(id, list);
+    }
+
     // add task
     public Task addTask(Task it){
         return tasksRepository.save(it);

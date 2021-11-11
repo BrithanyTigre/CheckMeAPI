@@ -64,7 +64,7 @@ public class TasksListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(taskService.getTask(idTask));
+            return ResponseEntity.ok(taskService.getTaskInList(idTask, res));
         }
     }
 
