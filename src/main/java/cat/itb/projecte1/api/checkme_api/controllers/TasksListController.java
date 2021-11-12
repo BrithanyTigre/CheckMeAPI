@@ -2,7 +2,6 @@ package cat.itb.projecte1.api.checkme_api.controllers;
 
 import cat.itb.projecte1.api.checkme_api.model.entities.Task;
 import cat.itb.projecte1.api.checkme_api.model.entities.TasksList;
-import cat.itb.projecte1.api.checkme_api.model.services.TaskService;
 import cat.itb.projecte1.api.checkme_api.model.services.TasksListService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TasksListController {
     private final TasksListService listService;
-    private final TaskController taskService;
+    private final TaskController taskController;
 
     @GetMapping("/todolists")
     public ResponseEntity<?> listLists() {
@@ -59,7 +58,7 @@ public class TasksListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(taskService.listTasksByList(res));
+            return ResponseEntity.ok(taskController.listTasksByList(res));
         }
     }
 
@@ -69,7 +68,7 @@ public class TasksListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(taskService.getTaskInList(idTask, res));
+            return ResponseEntity.ok(taskController.getTaskInList(idTask, res));
         }
     }
 
@@ -79,7 +78,7 @@ public class TasksListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(taskService.addTask(task));
+            return ResponseEntity.ok(taskController.addTask(task));
         }
     }
 
@@ -89,7 +88,7 @@ public class TasksListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(taskService.modifyTask(task));
+            return ResponseEntity.ok(taskController.modifyTask(task));
         }
     }
 
@@ -99,7 +98,7 @@ public class TasksListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(taskService.deleteTask(idItem));
+            return ResponseEntity.ok(taskController.deleteTask(idItem));
         }
     }
 }

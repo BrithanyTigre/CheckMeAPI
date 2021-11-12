@@ -5,6 +5,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.Set;
 
 @Data
 @Entity
@@ -13,6 +14,8 @@ public class TasksList {
     private String idList;
     private String name;
     private String filter;
+    @OneToMany(mappedBy = "idTasksList", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Task> tasks;
 
     /*@OneToMany(mappedBy = "List", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> tasks;*/
