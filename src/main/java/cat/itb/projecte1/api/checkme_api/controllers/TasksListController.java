@@ -18,8 +18,13 @@ public class TasksListController {
     private final TaskController taskService;
 
     @GetMapping("/todolists")
-    public List<TasksList> listLists() {
-        return listService.listLists();
+    public ResponseEntity<?> listLists() {
+        List<TasksList> res = listService.listLists();
+        if (res == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(res);
+        }
     }
 
     @PostMapping("/todolists")

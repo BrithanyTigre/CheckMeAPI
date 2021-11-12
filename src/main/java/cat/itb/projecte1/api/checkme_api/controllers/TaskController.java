@@ -16,8 +16,13 @@ public class TaskController {
     private final TaskService tasksService;
 
     @GetMapping("/todoitems")
-    public List<Task> listTasksByList(@PathVariable TasksList idList) {
-        return tasksService.listTasksByList(idList);
+    public ResponseEntity<?> listTasksByList(@PathVariable TasksList idList) {
+        List<Task> res = tasksService.listTasksByList(idList);
+        if (res == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(res);
+        }
     }
 
     @GetMapping("/todoitems/{id}")
