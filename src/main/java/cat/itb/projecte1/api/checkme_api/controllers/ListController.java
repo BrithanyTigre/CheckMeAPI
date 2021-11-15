@@ -19,7 +19,7 @@ public class ListController {
     @GetMapping("/todolists")
     public ResponseEntity<?> listLists() {
         List<TasksList> res = listService.listLists();
-        if (res == null) {
+        if (res.size() == 0) {
             return ResponseEntity.notFound().build();
         } else {
             return ResponseEntity.ok(res);

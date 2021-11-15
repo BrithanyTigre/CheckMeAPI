@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface TasksRepository extends JpaRepository<Task, String>{
     List<Task> findAllByIdList(TasksList idList);
-//    Task findByIdTaskAndIdList(String idItem, TasksList idList);
-    @Query(value = "SELECT * from Task where idTask = ?1 and idList = ?2", nativeQuery = true)
-    Task findByIdTaskAndIdList(String idTask, TasksList idList);
+    Task findByIdTaskAndIdList(String idItem, TasksList idList);
+//    @Query(value = "SELECT * from Task where idTask = ?1 and idList = ?2", nativeQuery = true)
+//    Task findByIdTaskAndIdList(String idTask, TasksList idList);
 }
