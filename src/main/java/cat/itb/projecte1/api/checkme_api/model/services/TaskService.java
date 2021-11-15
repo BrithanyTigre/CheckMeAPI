@@ -19,7 +19,7 @@ public class TaskService {
 
     // list tasks
     public List<Task> listTasksByList(TasksList idList){
-        return tasksRepository.findAllByIdTasksList(idList);
+        return tasksRepository.findAllByIdList(idList);
     }
 
     // get task by id
@@ -28,7 +28,7 @@ public class TaskService {
     }
 
     public Task getTaskInList(String id, TasksList list) {
-        return tasksRepository.findByIdTaskAndIdTasksList(id, list);
+        return tasksRepository.findByIdTaskAndIdList(id, list);
     }
 
     // add task

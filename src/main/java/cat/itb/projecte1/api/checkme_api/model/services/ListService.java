@@ -1,7 +1,7 @@
 package cat.itb.projecte1.api.checkme_api.model.services;
 
 import cat.itb.projecte1.api.checkme_api.model.entities.TasksList;
-import cat.itb.projecte1.api.checkme_api.model.repositories.TasksListRepository;
+import cat.itb.projecte1.api.checkme_api.model.repositories.ListRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,37 +9,37 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class TasksListService {
-    private final TasksListRepository tasksListRepository;
+public class ListService {
+    private final ListRepository listRepository;
 
     // list the lists
     public List<TasksList> listLists() {
-        return tasksListRepository.findAll();
+        return listRepository.findAll();
     }
 
     // get lists by id
     public TasksList getList(String id) {
-        return tasksListRepository.findById(id).orElse(null);
+        return listRepository.findById(id).orElse(null);
     }
 
     // add list
     public TasksList addList(TasksList it) {
-        return tasksListRepository.save(it);
+        return listRepository.save(it);
     }
 
     // modify list, if exist it changes, id doesn't return null
     public TasksList modifyList(TasksList it) {
         TasksList aux = null;
-        if (tasksListRepository.existsById(it.getIdList()))
-            aux = tasksListRepository.save(it);
+        if (listRepository.existsById(it.getIdList()))
+            aux = listRepository.save(it);
         return aux;
     }
 
     // delete list, if doesn't exist return null
     public TasksList deleteList(String id) {
-        TasksList aux = tasksListRepository.findById(id).orElse(null);
+        TasksList aux = listRepository.findById(id).orElse(null);
         if (aux != null)
-            tasksListRepository.deleteById(id);
+            listRepository.deleteById(id);
         return aux;
     }
 }

@@ -2,7 +2,7 @@ package cat.itb.projecte1.api.checkme_api.controllers;
 
 import cat.itb.projecte1.api.checkme_api.model.entities.Task;
 import cat.itb.projecte1.api.checkme_api.model.entities.TasksList;
-import cat.itb.projecte1.api.checkme_api.model.services.TasksListService;
+import cat.itb.projecte1.api.checkme_api.model.services.ListService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +12,8 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class TasksListController {
-    private final TasksListService listService;
+public class ListController {
+    private final ListService listService;
     private final TaskController taskController;
 
     @GetMapping("/todolists")
