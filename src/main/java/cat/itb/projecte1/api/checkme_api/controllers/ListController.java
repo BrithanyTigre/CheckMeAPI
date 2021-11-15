@@ -58,7 +58,7 @@ public class ListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(taskController.listTasksByList(res));
+            return taskController.listTasksByList(res);
         }
     }
 
@@ -68,7 +68,7 @@ public class ListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(taskController.getTaskInList(idTask, res));
+            return taskController.getTaskInList(idTask, res);
         }
     }
 
@@ -78,7 +78,7 @@ public class ListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(taskController.addTask(task));
+            return taskController.addTask(task);
         }
     }
 
@@ -88,7 +88,7 @@ public class ListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(taskController.modifyTask(task));
+            return taskController.modifyTask(task);
         }
     }
 
@@ -98,7 +98,7 @@ public class ListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(taskController.deleteTask(idItem));
+            return taskController.deleteTask(idItem);
         }
     }
 }
