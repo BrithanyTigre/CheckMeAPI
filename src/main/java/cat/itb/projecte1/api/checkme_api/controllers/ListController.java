@@ -98,7 +98,9 @@ public class ListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return taskController.deleteTask(idItem);
+            taskController.deleteTask(idItem);
+            res = listService.deleteList(idLlista);
+            return new ResponseEntity<>(res, HttpStatus.NO_CONTENT);
         }
     }
 }
