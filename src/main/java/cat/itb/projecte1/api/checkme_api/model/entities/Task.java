@@ -15,7 +15,7 @@ public class Task implements Serializable {
     private String idTask;
     @ManyToOne()
     @JoinColumn
-    private TasksList idList;
+    private TList idList;
     private String name;
     private boolean done;
 

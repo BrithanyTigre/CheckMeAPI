@@ -1,7 +1,7 @@
 package cat.itb.projecte1.api.checkme_api.controllers;
 
 import cat.itb.projecte1.api.checkme_api.model.entities.Task;
-import cat.itb.projecte1.api.checkme_api.model.entities.TasksList;
+import cat.itb.projecte1.api.checkme_api.model.entities.TList;
 import cat.itb.projecte1.api.checkme_api.model.services.ListService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ public class ListController {
 
     @GetMapping("/todolists")
     public ResponseEntity<?> listLists() {
-        List<TasksList> res = listService.listLists();
+        List<TList> res = listService.listLists();
         if (res.size() == 0) {
             return ResponseEntity.notFound().build();
         } else {
@@ -27,14 +27,14 @@ public class ListController {
     }
 
     @PostMapping("/todolists")
-    public ResponseEntity<?> addList(@RequestBody TasksList list) {
-        TasksList res = listService.addList(list);
+    public ResponseEntity<?> addList(@RequestBody TList list) {
+        TList res = listService.addList(list);
         return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
     @PutMapping("/todolists/{isLlista}")
-    public ResponseEntity<?> modifyList(@RequestBody TasksList list) {
-        TasksList res = listService.modifyList(list);
+    public ResponseEntity<?> modifyList(@RequestBody TList list) {
+        TList res = listService.modifyList(list);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -43,18 +43,18 @@ public class ListController {
     }
 
     @DeleteMapping("/todolists/{idLlista}")
-    public ResponseEntity<?> deleteList(@PathVariable String idLlista) {
-        TasksList res = listService.deleteList(idLlista);
+    public ResponseEntity<?> deleteList(@PathVariable String idLista) {
+        TList res = listService.getList(idLista);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return new ResponseEntity<>(res, HttpStatus.NO_CONTENT);
+            return taskController.deleteTasksByIdList(res);
         }
     }
 
     @GetMapping("/todolists/{idLlista}/todoitems")
     public ResponseEntity<?> getListItems(@PathVariable String idLlista) {
-        TasksList res = listService.getList(idLlista);
+        TList res = listService.getList(idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -64,7 +64,7 @@ public class ListController {
 
     @GetMapping("/todolists/{idLlista}/todoitems/{idTask}")
     public ResponseEntity<?> getListItem(@PathVariable String idLlista, @PathVariable String idTask) {
-        TasksList res = listService.getList(idLlista);
+        TList res = listService.getList(idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -74,7 +74,7 @@ public class ListController {
 
     @PostMapping("/todolists/{idLlista}/todoitems")
     public ResponseEntity<?> addTaskInList(@PathVariable String idLlista, @RequestBody Task task) {
-        TasksList res = listService.getList(idLlista);
+        TList res = listService.getList(idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -84,7 +84,7 @@ public class ListController {
 
     @PutMapping("/todolists/{idLlista}/todoitems/{idItem}")
     public ResponseEntity<?> modifyTaskInList(@PathVariable String idLlista, @RequestBody Task task) {
-        TasksList res = listService.getList(idLlista);
+        TList res = listService.getList(idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -94,7 +94,7 @@ public class ListController {
 
     @DeleteMapping("/todolists/{idLlista}/todoitems/{idItem}")
     public ResponseEntity<?> deleteTaskInList(@PathVariable String idLlista, @PathVariable String idItem) {
-        TasksList res = listService.getList(idLlista);
+        TList res = listService.getList(idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {

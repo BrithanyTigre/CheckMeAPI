@@ -1,7 +1,7 @@
 package cat.itb.projecte1.api.checkme_api.model.services;
 
 import cat.itb.projecte1.api.checkme_api.model.entities.Task;
-import cat.itb.projecte1.api.checkme_api.model.entities.TasksList;
+import cat.itb.projecte1.api.checkme_api.model.entities.TList;
 import cat.itb.projecte1.api.checkme_api.model.repositories.TasksRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,22 +13,23 @@ import java.util.List;
 public class TaskService {
     private final TasksRepository tasksRepository;
 
-    public List<Task> listTasks() {
-        return tasksRepository.findAll();
-    }
+//    public List<Task> listTasks() {
+//        return tasksRepository.findAll();
+//    }
 
     // list tasks
-    public List<Task> listTasksByList(TasksList idList){
+    public List<Task> listTasksByList(TList idList){
         return tasksRepository.findAllByIdList(idList);
     }
 
     // get task by id
-    public Task getTask(String id){
-        return tasksRepository.findById(id).orElse(null);
-    }
+//    public Task getTask(String id){
+//        return tasksRepository.findById(id).orElse(null);
+//    }
 
-    public Task getTaskInList(String id, TasksList list) {
-        return tasksRepository.findByIdTaskAndIdList(id, list);
+    // get a task in a list by ID list
+    public Task getTaskInList(String id, TList list) {
+        return tasksRepository.findTaskByIdTaskAndIdList(id, list);
     }
 
     // add task
@@ -50,5 +51,13 @@ public class TaskService {
         if (aux != null)
             tasksRepository.deleteById(id);
         return aux;
+    }
+
+    public List<Task> deleteTasksByList(TList idList) {
+        List<Task> aux = listTasksByList(idList);
+        if (aux.size() != 0)
+            tasksRepository.deleteTasksByIdList(idList);
+        return aux;
+
     }
 }
