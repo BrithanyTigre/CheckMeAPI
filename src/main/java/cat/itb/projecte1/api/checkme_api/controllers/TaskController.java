@@ -63,6 +63,7 @@ public class TaskController {
 
     @DeleteMapping("/todoitems")
     public ResponseEntity<?> deleteTasksByIdList(@PathVariable TList idList) {
+
         List<Task> res = tasksService.deleteTasksByList(idList);
         if (res.size() == 0) {
             return ResponseEntity.notFound().build();

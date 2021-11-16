@@ -46,7 +46,7 @@ public class ListController {
 
     @DeleteMapping("/todolists/{idLlista}")
     public ResponseEntity<?> deleteList(@PathVariable String idLlista) {
-        TList res = listService.deleteList(idLlista);
+        TList res = listService.getList(idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {

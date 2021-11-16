@@ -2,6 +2,7 @@ package cat.itb.projecte1.api.checkme_api.model.services;
 
 import cat.itb.projecte1.api.checkme_api.model.entities.Task;
 import cat.itb.projecte1.api.checkme_api.model.entities.TList;
+import cat.itb.projecte1.api.checkme_api.model.repositories.ListRepository;
 import cat.itb.projecte1.api.checkme_api.model.repositories.TasksRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,7 @@ public class TaskService {
     }
 
     public List<Task> deleteTasksByList(TList idList) {
+
         List<Task> aux = listTasksByList(idList);
         if (aux.size() != 0)
             tasksRepository.deleteTasksByIdList(idList);
