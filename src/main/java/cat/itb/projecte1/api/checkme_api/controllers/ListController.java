@@ -3,6 +3,7 @@ package cat.itb.projecte1.api.checkme_api.controllers;
 import cat.itb.projecte1.api.checkme_api.model.entities.Task;
 import cat.itb.projecte1.api.checkme_api.model.entities.TList;
 import cat.itb.projecte1.api.checkme_api.model.services.ListService;
+import cat.itb.projecte1.api.checkme_api.model.services.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.List;
 public class ListController {
     private final ListService listService;
     private final TaskController taskController;
+    private final TaskService taskService;
 
     @GetMapping("/todolists")
     public ResponseEntity<?> listLists() {
@@ -48,7 +50,13 @@ public class ListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return taskController.deleteTasksByIdList(res);
+            List<Task> aux= taskService.deleteTasksByList(res);
+            if (aux.size() == 0) {
+                return ResponseEntity.notFound().build();
+            } else {
+                listService.deleteList(idLlista);
+                return new ResponseEntity<>(res, HttpStatus.NO_CONTENT);
+            }
         }
     }
 
@@ -98,9 +106,7 @@ public class ListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            res = listService.deleteList(idLlista);
-            taskController.deleteTask(idItem);
-            return new ResponseEntity<>(res, HttpStatus.NO_CONTENT);
+            return taskController.deleteTask(idItem);
         }
     }
 }
