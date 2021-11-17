@@ -15,7 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TaskController {
     private final TaskService tasksService;
-    private final ListService listService;
 
     @GetMapping("/todoitems")
     public ResponseEntity<?> listTasksByList(@PathVariable TList idList) {
@@ -69,7 +68,6 @@ public class TaskController {
         if (res.size() == 0) {
             return ResponseEntity.notFound().build();
         } else {
-            listService.deleteList(idList.getIdList());
             return new ResponseEntity<>(res, HttpStatus.NO_CONTENT);
         }
     }

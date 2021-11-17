@@ -33,6 +33,7 @@ public class TaskService {
     public Task modifyTask(Task it){
         Task aux = null;
         if (tasksRepository.existsById(it.getIdTask()))
+//            it.setDone(true);
             aux = tasksRepository.save(it);
         return aux;
     }
