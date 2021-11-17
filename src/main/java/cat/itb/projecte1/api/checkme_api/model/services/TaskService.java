@@ -14,21 +14,12 @@ import java.util.List;
 public class TaskService {
     private final TasksRepository tasksRepository;
 
-//    public List<Task> listTasks() {
-//        return tasksRepository.findAll();
-//    }
-
-    // list tasks
+    // list tasks by List
     public List<Task> listTasksByList(TList idList){
         return tasksRepository.findAllByIdList(idList);
     }
 
-    // get task by id
-//    public Task getTask(String id){
-//        return tasksRepository.findById(id).orElse(null);
-//    }
-
-    // get a task in a list by ID list
+    // get a task by in a list by ID List and ID Task
     public Task getTaskInList(String id, TList list) {
         return tasksRepository.findTaskByIdTaskAndIdList(id, list);
     }
@@ -54,8 +45,8 @@ public class TaskService {
         return aux;
     }
 
+    // delete tasks by ID List
     public List<Task> deleteTasksByList(TList idList) {
-
         List<Task> aux = listTasksByList(idList);
         if (aux.size() != 0)
             tasksRepository.deleteTasksByIdList(idList);
