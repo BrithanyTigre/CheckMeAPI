@@ -16,7 +16,7 @@ import java.util.List;
 public class ListController {
     private final ListService listService;
     private final TaskController taskController;
-    private final TaskService taskService;
+
 
     @GetMapping("/todolists")
     public ResponseEntity<?> listLists() {
@@ -48,18 +48,6 @@ public class ListController {
     public ResponseEntity<?> deleteList(@PathVariable String idLlista) {
         TList res = listService.getList(idLlista);
         if (res == null) {
-            return ResponseEntity.notFound().build();
-        } else {
-            taskController.deleteTasksByIdList(res);
-            res = listService.deleteList(idLlista);
-            return new ResponseEntity<>(res, HttpStatus.NO_CONTENT);
-        }
-    }
-
-    @DeleteMapping("/todolists/{idLlista}/todoitems")
-    public ResponseEntity<?> deleteAllTasksInList(@PathVariable String idLlista) {
-        TList res = listService.getList(idLlista);
-        if (res == null){
             return ResponseEntity.notFound().build();
         } else {
             return taskController.deleteTasksByIdList(res);

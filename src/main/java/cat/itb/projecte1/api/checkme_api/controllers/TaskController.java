@@ -2,6 +2,7 @@ package cat.itb.projecte1.api.checkme_api.controllers;
 
 import cat.itb.projecte1.api.checkme_api.model.entities.Task;
 import cat.itb.projecte1.api.checkme_api.model.entities.TList;
+import cat.itb.projecte1.api.checkme_api.model.services.ListService;
 import cat.itb.projecte1.api.checkme_api.model.services.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TaskController {
     private final TaskService tasksService;
+    private final ListService listService;
 
     @GetMapping("/todoitems")
     public ResponseEntity<?> listTasksByList(@PathVariable TList idList) {
@@ -67,6 +69,7 @@ public class TaskController {
         if (res.size() == 0) {
             return ResponseEntity.notFound().build();
         } else {
+            listService.deleteList(idList.getIdList());
             return new ResponseEntity<>(res, HttpStatus.NO_CONTENT);
         }
     }
