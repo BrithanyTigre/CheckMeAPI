@@ -16,7 +16,7 @@ import java.util.List;
 public class TaskController {
     private final TaskService tasksService;
 
-    @GetMapping("/todoitems")
+    @GetMapping
     public ResponseEntity<?> listTasksByList(@PathVariable TList idList) {
         List<Task> res = tasksService.listTasksByList(idList);
         if (res.size() == 0) {
@@ -62,7 +62,7 @@ public class TaskController {
         }
     }
 
-    @DeleteMapping("/todoitems")
+    @DeleteMapping
     public ResponseEntity<?> deleteTasksByIdList(@PathVariable TList idList) {
         List<Task> res = tasksService.deleteTasksByIdList(idList);
         if (res.size() == 0) {

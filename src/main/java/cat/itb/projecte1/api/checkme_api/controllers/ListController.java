@@ -50,7 +50,9 @@ public class ListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return taskController.deleteTasksByIdList(res);
+            taskController.deleteTasksByIdList(res);
+            listService.deleteList(idLlista);
+            return new ResponseEntity<>(res, HttpStatus.NO_CONTENT);
         }
     }
 

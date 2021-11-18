@@ -17,6 +17,6 @@ public class Task implements Serializable {
     @JoinColumn
     private TList idList;
     private String name;
-    private boolean done;
+    private boolean done = false;
 
 }
