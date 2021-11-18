@@ -87,12 +87,12 @@ public class ListController {
     }
 
     @PutMapping("/todolists/{idLlista}/todoitems/{idItem}")
-    public ResponseEntity<?> modifyTaskInList(@PathVariable String idLlista, @RequestBody Task task) {
+    public ResponseEntity<?> modifyTaskInList(@PathVariable String idLlista, @PathVariable String idItem) {
         TList res = listService.getList(idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return taskController.modifyTask(task);
+            return taskController.modifyTask(idItem, res);
         }
     }
 

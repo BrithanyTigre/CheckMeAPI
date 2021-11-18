@@ -43,8 +43,8 @@ public class TaskController {
     }
 
     @PutMapping("/todoitems/{id}")
-    public ResponseEntity<?> modifyTask(@RequestBody Task task) {
-        Task res = tasksService.modifyTask(task);
+    public ResponseEntity<?> modifyTask(@PathVariable String id, @PathVariable TList idLlista) {
+        Task res = tasksService.modifyTask(id, idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
