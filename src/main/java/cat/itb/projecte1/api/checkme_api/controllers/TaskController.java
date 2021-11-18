@@ -26,7 +26,7 @@ public class TaskController {
         }
     }
 
-    @GetMapping("/todoitems/{id}")
+    @GetMapping
     public ResponseEntity<?> getTaskInList(@PathVariable String id, TList list) {
         Task res = tasksService.getTaskInList(id, list);
         if (res == null) {
@@ -36,13 +36,13 @@ public class TaskController {
         }
     }
 
-    @PostMapping("/todoitems")
+    @PostMapping
     public ResponseEntity<?> addTask(@RequestBody Task task) {
         Task res = tasksService.addTask(task);
         return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
-    @PutMapping("/todoitems/{id}")
+    @PutMapping
     public ResponseEntity<?> modifyTask(@PathVariable String id, @PathVariable TList idLlista) {
         Task res = tasksService.modifyTask(id, idLlista);
         if (res == null) {
@@ -52,7 +52,7 @@ public class TaskController {
         }
     }
 
-    @DeleteMapping("todoitems/{id}")
+    @DeleteMapping
     public ResponseEntity<?> deleteTask(@PathVariable String id) {
         Task res = tasksService.deleteTask(id);
         if (res == null) {
