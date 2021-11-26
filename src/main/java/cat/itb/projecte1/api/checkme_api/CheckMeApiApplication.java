@@ -20,8 +20,7 @@ public class CheckMeApiApplication {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/todolists/**")
                         .allowedOrigins("*")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
-                        .maxAge(3600);
+                        .allowedMethods("GET", "POST", "PUT", "DELETE");
             }
         };
     }
