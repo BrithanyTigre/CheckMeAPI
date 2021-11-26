@@ -18,7 +18,7 @@ public class CheckMeApiApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/todolists/**")
+                registry.addMapping("https://checkme-app.herokuapp.com/todolists/**")
                         .allowedOrigins("*")
                         .allowedMethods("GET", "POST", "PUT", "DELETE");
             }
