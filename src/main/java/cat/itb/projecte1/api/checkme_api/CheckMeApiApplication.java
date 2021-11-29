@@ -13,16 +13,4 @@ public class CheckMeApiApplication {
         SpringApplication.run(CheckMeApiApplication.class, args);
     }
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("https://checkme-app.herokuapp.com/todolists/**")
-                        .allowedOrigins("*")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE");
-            }
-        };
-    }
-
 }
