@@ -16,7 +16,7 @@ import java.util.List;
 public class TaskController {
     private final TaskService tasksService;
 
-    @GetMapping
+    @GetMapping ("/todoitems")
     public ResponseEntity<?> listTasksByList(@PathVariable TList idList) {
         List<Task> res = tasksService.listTasksByList(idList);
         if (res.size() == 0) {
@@ -26,9 +26,9 @@ public class TaskController {
         }
     }
 
-    @GetMapping
-    public ResponseEntity<?> getTaskInList(@PathVariable String id, TList list) {
-        Task res = tasksService.getTaskInList(id, list);
+    @GetMapping("/todoitems/{idItem}")
+    public ResponseEntity<?> getTaskInList(@PathVariable String idItem, TList list) {
+        Task res = tasksService.getTaskInList(idItem, list);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -36,15 +36,15 @@ public class TaskController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/todoitems")
     public ResponseEntity<?> addTask(@RequestBody Task task) {
         Task res = tasksService.addTask(task);
         return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
-    @PutMapping
-    public ResponseEntity<?> modifyTask(@PathVariable String id, @PathVariable TList idLlista) {
-        Task res = tasksService.modifyTask(id, idLlista);
+    @PutMapping("/todoitems/{idItem}")
+    public ResponseEntity<?> modifyTask(@PathVariable String idItem, @PathVariable TList idLlista) {
+        Task res = tasksService.modifyTask(idItem, idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -52,9 +52,9 @@ public class TaskController {
         }
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> deleteTask(@PathVariable String id) {
-        Task res = tasksService.deleteTask(id);
+    @DeleteMapping("/todoitems/{idItem}")
+    public ResponseEntity<?> deleteTask(@PathVariable String idItem) {
+        Task res = tasksService.deleteTask(idItem);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {

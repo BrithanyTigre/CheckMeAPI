@@ -6,18 +6,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 public class Configuration {
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/todolists/**")
-                        //.allowedOrigins("http://localhost:9001")
-                        .allowedOrigins("*")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
-                        .maxAge(3600);
-            }
-        };
-    }
+//    @Bean
+//    public WebMvcConfigurer corsConfigurer() {
+//        return new WebMvcConfigurer() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                registry.addMapping("/todolists/**")
+//                        //.allowedOrigins("http://localhost:9001")
+//                        .allowedOrigins("*")
+//                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+//                        .maxAge(3600);
+//            }
+//        };
+//    }
 
 }
