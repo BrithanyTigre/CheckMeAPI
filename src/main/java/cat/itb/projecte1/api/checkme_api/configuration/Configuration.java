@@ -11,10 +11,13 @@ public class Configuration {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
+                registry.addMapping("/todolists/**")
+                        //.allowedOrigins("http://localhost:9001")
                         .allowedOrigins("*")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE");
+                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .maxAge(3600);
             }
         };
     }
+
 }

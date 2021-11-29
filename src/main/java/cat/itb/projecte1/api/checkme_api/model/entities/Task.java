@@ -1,6 +1,7 @@
 package cat.itb.projecte1.api.checkme_api.model.entities;
 
 import lombok.Data;
+import lombok.Generated;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,6 +13,7 @@ import java.io.Serializable;
 @Entity
 public class Task implements Serializable {
     @Id
+    @Generated
     private String idTask;
     @ManyToOne()
     @JoinColumn
