@@ -1,11 +1,8 @@
 package cat.itb.projecte1.api.checkme_api.model.entities;
 
 import lombok.Data;
-import lombok.Generated;
-
 import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
+
 
 @Data
 @Entity
