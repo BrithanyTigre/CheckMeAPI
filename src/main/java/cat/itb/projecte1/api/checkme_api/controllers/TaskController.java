@@ -27,7 +27,7 @@ public class TaskController {
     }
 
     @GetMapping("/todoitems/{idItem}")
-    public ResponseEntity<?> getTaskInList(@PathVariable String idItem, TList list) {
+    public ResponseEntity<?> getTaskInList(@PathVariable Long idItem, TList list) {
         Task res = tasksService.getTaskInList(idItem, list);
         if (res == null) {
             return ResponseEntity.notFound().build();
@@ -43,7 +43,7 @@ public class TaskController {
     }
 
     @PutMapping("/todoitems/{idItem}")
-    public ResponseEntity<?> modifyTask(@PathVariable String idItem, @PathVariable TList idLlista) {
+    public ResponseEntity<?> modifyTask(@PathVariable Long idItem, @PathVariable TList idLlista) {
         Task res = tasksService.modifyTask(idItem, idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
@@ -53,7 +53,7 @@ public class TaskController {
     }
 
     @DeleteMapping("/todoitems/{idItem}")
-    public ResponseEntity<?> deleteTask(@PathVariable String idItem) {
+    public ResponseEntity<?> deleteTask(@PathVariable Long idItem) {
         Task res = tasksService.deleteTask(idItem);
         if (res == null) {
             return ResponseEntity.notFound().build();

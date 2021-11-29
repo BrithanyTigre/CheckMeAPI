@@ -20,7 +20,7 @@ public class TaskService {
     }
 
     // get a task by in a list by ID List and ID Task
-    public Task getTaskInList(String id, TList list) {
+    public Task getTaskInList(Long id, TList list) {
         return tasksRepository.findTaskByIdTaskAndIdList(id, list);
     }
 
@@ -30,7 +30,7 @@ public class TaskService {
     }
 
     // modify if task is done, if esxits changes the boolean, if doesn't returns null
-    public Task modifyTask(String id, TList idList){
+    public Task modifyTask(Long id, TList idList){
         Task aux = tasksRepository.findTaskByIdTaskAndIdList(id, idList);
         if (aux != null) {
             aux.setDone(!aux.isDone());
@@ -40,7 +40,7 @@ public class TaskService {
     }
 
     // delete task, if doesn't exist return null
-    public Task deleteTask(String id){
+    public Task deleteTask(Long id){
         Task aux = tasksRepository.findById(id).orElse(null);
         if (aux != null)
             tasksRepository.deleteById(id);

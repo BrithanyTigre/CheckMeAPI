@@ -18,7 +18,7 @@ public class ListService {
     }
 
     // get lists by id
-    public TList getList(String id) {
+    public TList getList(Long id) {
         return listRepository.findById(id).orElse(null);
     }
 
@@ -36,7 +36,7 @@ public class ListService {
     }
 
     // delete list, if doesn't exist return null
-    public TList deleteList(String id) {
+    public TList deleteList(Long id) {
         TList aux = listRepository.findById(id).orElse(null);
         if (aux != null)
 

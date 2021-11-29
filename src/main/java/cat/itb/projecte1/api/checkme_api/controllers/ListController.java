@@ -45,7 +45,7 @@ public class ListController {
     }
 
     @DeleteMapping("/todolists/{idLlista}")
-    public ResponseEntity<?> deleteList(@PathVariable String idLlista) {
+    public ResponseEntity<?> deleteList(@PathVariable Long idLlista) {
         TList res = listService.getList(idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
@@ -57,7 +57,7 @@ public class ListController {
     }
 
     @GetMapping("/todolists/{idLlista}/todoitems")
-    public ResponseEntity<?> getListItems(@PathVariable String idLlista) {
+    public ResponseEntity<?> getListItems(@PathVariable Long idLlista) {
         TList res = listService.getList(idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
@@ -67,7 +67,7 @@ public class ListController {
     }
 
     @GetMapping("/todolists/{idLlista}/todoitems/{idTask}")
-    public ResponseEntity<?> getListItem(@PathVariable String idLlista, @PathVariable String idTask) {
+    public ResponseEntity<?> getListItem(@PathVariable Long idLlista, @PathVariable Long idTask) {
         TList res = listService.getList(idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
@@ -77,7 +77,7 @@ public class ListController {
     }
 
     @PostMapping("/todolists/{idLlista}/todoitems")
-    public ResponseEntity<?> addTaskInList(@PathVariable String idLlista, @RequestBody Task task) {
+    public ResponseEntity<?> addTaskInList(@PathVariable Long idLlista, @RequestBody Task task) {
         TList res = listService.getList(idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
@@ -87,7 +87,7 @@ public class ListController {
     }
 
     @PutMapping("/todolists/{idLlista}/todoitems/{idItem}")
-    public ResponseEntity<?> modifyTaskInList(@PathVariable String idLlista, @PathVariable String idItem) {
+    public ResponseEntity<?> modifyTaskInList(@PathVariable Long idLlista, @PathVariable Long idItem) {
         TList res = listService.getList(idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
@@ -97,7 +97,7 @@ public class ListController {
     }
 
     @DeleteMapping("/todolists/{idLlista}/todoitems/{idItem}")
-    public ResponseEntity<?> deleteTaskInList(@PathVariable String idLlista, @PathVariable String idItem) {
+    public ResponseEntity<?> deleteTaskInList(@PathVariable Long idLlista, @PathVariable Long idItem) {
         TList res = listService.getList(idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();

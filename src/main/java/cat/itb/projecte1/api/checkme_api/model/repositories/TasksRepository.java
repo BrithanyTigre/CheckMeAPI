@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface TasksRepository extends JpaRepository<Task, String>{
+public interface TasksRepository extends JpaRepository<Task, Long>{
     List<Task> findAllByIdList(TList idList);
-    Task findTaskByIdTaskAndIdList(String idItem, TList idList);
+    Task findTaskByIdTaskAndIdList(Long idItem, TList idList);
     void deleteTasksByIdList(TList idList);
 }
