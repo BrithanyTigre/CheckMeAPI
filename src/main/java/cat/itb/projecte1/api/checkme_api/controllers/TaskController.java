@@ -42,9 +42,9 @@ public class TaskController {
         return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
-    @PutMapping("/todoitems/{idItem}")
-    public ResponseEntity<?> modifyTask(@PathVariable Long idItem, @PathVariable TList idLlista) {
-        Task res = tasksService.modifyTask(idItem, idLlista);
+    @PutMapping("/todoitems")
+    public ResponseEntity<?> modifyTask(@RequestBody Task task) {
+        Task res = tasksService.modifyTask(task);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {

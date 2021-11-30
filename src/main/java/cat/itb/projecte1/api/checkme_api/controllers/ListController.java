@@ -3,7 +3,6 @@ package cat.itb.projecte1.api.checkme_api.controllers;
 import cat.itb.projecte1.api.checkme_api.model.entities.Task;
 import cat.itb.projecte1.api.checkme_api.model.entities.TList;
 import cat.itb.projecte1.api.checkme_api.model.services.ListService;
-import cat.itb.projecte1.api.checkme_api.model.services.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -86,13 +85,13 @@ public class ListController {
         }
     }
 
-    @PutMapping("/todolists/{idLlista}/todoitems/{idItem}")
-    public ResponseEntity<?> modifyTaskInList(@PathVariable Long idLlista, @PathVariable Long idItem) {
+    @PutMapping("/todolists/{idLlista}/todoitems")
+    public ResponseEntity<?> modifyTaskInList(@PathVariable Long idLlista, @RequestBody Task task) {
         TList res = listService.getList(idLlista);
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return taskController.modifyTask(idItem, res);
+            return taskController.modifyTask(task);
         }
     }
 

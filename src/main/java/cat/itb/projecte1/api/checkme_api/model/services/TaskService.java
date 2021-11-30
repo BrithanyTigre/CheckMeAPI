@@ -30,11 +30,10 @@ public class TaskService {
     }
 
     // modify if task is done, if esxits changes the boolean, if doesn't returns null
-    public Task modifyTask(Long id, TList idList){
-        Task aux = tasksRepository.findTaskByIdTaskAndIdList(id, idList);
-        if (aux != null) {
-            aux.setDone(!aux.isDone());
-            tasksRepository.save(aux);
+    public Task modifyTask(Task task){
+        Task aux = null;
+        if (tasksRepository.existsById(task.getIdTask())) {
+            aux = tasksRepository.save(task);
         }
         return aux;
     }
