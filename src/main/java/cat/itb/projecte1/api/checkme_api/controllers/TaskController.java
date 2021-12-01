@@ -2,7 +2,6 @@ package cat.itb.projecte1.api.checkme_api.controllers;
 
 import cat.itb.projecte1.api.checkme_api.model.entities.Task;
 import cat.itb.projecte1.api.checkme_api.model.entities.TList;
-import cat.itb.projecte1.api.checkme_api.model.services.ListService;
 import cat.itb.projecte1.api.checkme_api.model.services.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -37,7 +36,8 @@ public class TaskController {
     }
 
     @PostMapping("/todoitems")
-    public ResponseEntity<?> addTask(@RequestBody Task task) {
+    public ResponseEntity<?> addTask(@RequestBody Task task, TList list) {
+        task.setIdList(list);
         Task res = tasksService.addTask(task);
         return new ResponseEntity<>(res, HttpStatus.CREATED);
     }

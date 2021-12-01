@@ -81,7 +81,7 @@ public class ListController {
         if (res == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return taskController.addTask(task);
+            return taskController.addTask(task, res);
         }
     }
 
