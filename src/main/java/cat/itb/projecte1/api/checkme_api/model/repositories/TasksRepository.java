@@ -9,5 +9,4 @@ import java.util.List;
 public interface TasksRepository extends JpaRepository<Task, Long>{
     List<Task> findAllByIdList(TList idList);
     Task findTaskByIdTaskAndIdList(Long idItem, TList idList);
-    void deleteTasksByIdList(TList idList);
 }

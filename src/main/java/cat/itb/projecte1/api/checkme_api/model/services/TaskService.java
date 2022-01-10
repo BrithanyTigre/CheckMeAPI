@@ -50,7 +50,9 @@ public class TaskService {
     public List<Task> deleteTasksByIdList(TList idList) {
         List<Task> aux = listTasksByList(idList);
         if (aux.size() != 0)
-            tasksRepository.deleteTasksByIdList(idList);
+            for (Task task : aux) {
+                tasksRepository.deleteById(task.getIdTask());
+            }
         return aux;
 
     }
