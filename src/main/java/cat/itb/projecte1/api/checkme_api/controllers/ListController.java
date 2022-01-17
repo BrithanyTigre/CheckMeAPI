@@ -33,7 +33,7 @@ public class ListController {
         return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
-    @PutMapping("/todolists/{isLlista}")
+    @PutMapping("/todolists")
     public ResponseEntity<?> modifyList(@RequestBody TList list) {
         TList res = listService.modifyList(list);
         if (res == null) {
