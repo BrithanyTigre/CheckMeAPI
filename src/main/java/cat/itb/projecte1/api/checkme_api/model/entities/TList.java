@@ -11,5 +11,4 @@ public class TList {
     @GeneratedValue
     private Long idList;
     private String name;
-    private String filter;
 }

@@ -39,7 +39,6 @@ public class ListService {
     public TList deleteList(Long id) {
         TList aux = listRepository.findById(id).orElse(null);
         if (aux != null)
-
             listRepository.deleteById(id);
         return aux;
     }
