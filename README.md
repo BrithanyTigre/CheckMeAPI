@@ -18,7 +18,6 @@ _/todolists_
 #### Eliminar una llista:
 
 La funcio deleteList() comprova si existeix la llista segons el seu ID i si existeix, l'elimina. En el cas de que la llista no existeix - retorna "Not found".
-Per ara, aquest endpoint no funciona correctament. Si una llista es troba buida, l'acció es realitza bé. En canvi, si la llista conté ítems, ens retorna un error que encara estem intentant solucionar.
 
 _/todolists_
 
